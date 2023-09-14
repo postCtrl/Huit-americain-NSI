@@ -26,6 +26,13 @@ class Main:
 
 		self.defausse.append(self.pile.pop())
 
+	def phaseDeJeu(self):
+		for i in joueurs:
+			i.voirCartes()
+
+
+
 
 main = Main()
 main.distribuerCartes()
+main.phaseDeJeu()
