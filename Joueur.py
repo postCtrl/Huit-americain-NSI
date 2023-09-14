@@ -9,7 +9,8 @@ class Joueur:
 		self.paquet.append(C)
 
 	def voirCartes(self):
-		print(self.paquet)
+		for i in self.paquet:
+			print(f"{self.nom} a le {i.valeur} de {i.couleur}")
 
 
 
