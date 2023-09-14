@@ -22,13 +22,19 @@ class Main:
 	def distribuerCartes(self):
 		for _ in range(7):
 			for i in self.joueurs:
-				i.addCarte(self.pile.pop(random.randint(0, len(self.pile) - 1)))
+				i.ajoutCarte(self.pile.pop(random.randint(0, len(self.pile) - 1)))
 
 		self.defausse.append(self.pile.pop())
 
 	def phaseDeJeu(self):
-		for i in joueurs:
+		for i in self.joueurs:
 			i.voirCartes()
+
+			r = i.poserCartes(self.defausse[-1])
+
+			if r == False :
+				i.ajoutCarte(self.pile.pop())
+
 
 
 
