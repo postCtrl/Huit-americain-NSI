@@ -33,16 +33,19 @@ class Main:
 	def phaseDeJeu(self):
 		print(f"Voici la défausse: {self.defausse[-1].valeur} de {self.defausse[-1].couleur}\n")
 
-		r = False
+		for i in self.joueurs: #les joueurs jouent chacune leur tour
+			i.voirCartes()#on affiche les cartes du joueur
 
-		for i in self.joueurs:
-			i.voirCartes()
+			r = i.poserCartes(self.defausse[-1]) #le joueur concerné pose sa carte ou en tire une
+			
+			if r == False : #si il choisi de la tirer
+				if self.pile[-1].compatible(self.defausse[-1]) == True: #si le joueur peut joueur la carte tirée
+					self.defausse.append(self.pile.pop())#on l'ajoute à la défausse
+				else: #si on ne peut pas la joueur
+					i.ajoutCarte(self.pile.pop())#on l'ajoute à sa main
 
-			while r == False:
-				r = i.poserCartes(self.defausse[-1])
-
-			i.ajoutCarte(self.pile.pop())
-
+			else :
+				self.defausse.append(r)#
 
 
 main = Main()

@@ -2,15 +2,16 @@ from Carte import *
 
 class Joueur:
 	def __init__(self, nom):
-		self.paquet = []
+		self.main = []
 		self.nom = nom
 
 	def ajoutCarte(self, C):
-		self.paquet.append(C)
+		self.main.append(C)
+		print(f"La carte {C.valeur}")
 
 	def voirCartes(self):
 		index = 0
-		for i in self.paquet:
+		for i in self.main:
 			index += 1
 			print(f"{index}. {self.nom} a le {i.valeur} de {i.couleur}")
 		print("")
@@ -18,12 +19,13 @@ class Joueur:
 	def poserCartes(self, defausse):
 		r = input("Pour choisir votre carte sélectionnez l'indice de la carte que vous voulez jouer: ") - 1
 
-		while self.paquet[r].couleur != defausse.couleur or self.paquet[r] != defausse.valeur:
+		while self.main[r].compatible(defausse) == False:
 			r = input("La carte choisie n'est peut pas être posée, choisissez en une autre ou tirez une carte avec 't': ")
 			
-			if r.lower() == 't':
+			if r.lower() == 't':#si le joueur préfère tirer une carte
 				return False 
 
-			r = int(r) 
+			r = int(r) #ne pas avoir d'erreur lorsque j'uilise 'r' comme indice
 
-		return self.paquet[r]
+		e = self.main.pop(r) # on retire la carte utilisée	
+		return e # on la retourne également pour la placer dans le défausse
