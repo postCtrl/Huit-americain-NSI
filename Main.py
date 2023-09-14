@@ -4,7 +4,7 @@ from Joueur import *
 
 class Main:
 	def __init__(self):
-		self.couleurs_cartes = ["pique", "carreau", "cœur", "trèfle"]
+		self.couleurs_cartes = ["pique(♠)", "carreau(♦)", "cœur(♥)", "trèfle(♣)"]
 		self.pile = [Carte(self.couleurs_cartes[i], j) for i in range(4) for j in range(1, 14)]
 		self.defausse = [] #là où les joueurs posent leurs cartes
 		self.joueurs = [] #liste d'objets contenant les joueurs du jeu
@@ -31,7 +31,7 @@ class Main:
 		self.defausse.append(self.pile.pop())
 
 	def phaseDeJeu(self):
-		print(f"Voici la défausse: {self.defausse[-1].valeur} de {self.defausse[-1].couleur}\n")
+		print(f"Voici la carte centrale: {self.defausse[-1].valeur} de {self.defausse[-1].couleur}\n")
 
 		for i in self.joueurs: #les joueurs jouent chacune leur tour
 			i.voirCartes()#on affiche les cartes du joueur
@@ -43,9 +43,9 @@ class Main:
 					self.defausse.append(self.pile.pop())#on l'ajoute à la défausse
 				else: #si on ne peut pas la joueur
 					i.ajoutCarte(self.pile.pop())#on l'ajoute à sa main
-
-			else :
-				self.defausse.append(r)#
+			
+			else : 
+				self.defausse.append(r) #on ajoute la carte jouée à la défausse
 
 
 main = Main()
