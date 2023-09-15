@@ -18,11 +18,12 @@ class Joueur:
 		print("")
 
 	def poserCartes(self, defausse):
-		r = int(input("Pour choisir votre carte sélectionnez l'indice de la carte que vous voulez jouer ou tirez une carte avec 't': ")) - 1
+		r = input("Pour choisir votre carte sélectionnez l'indice de la carte que vous voulez jouer ou tirez une carte avec 't': ")
 
 		if r.lower() == 't':
 			return False
 
+		r = int(r) - 1
 
 		while self.main[r].compatible(defausse) == False: #tant que le joueur n'a pas joué de carte compatible
 			r = input("La carte choisie n'est peut pas être posée, choisissez en une autre ou tirez une carte avec 't': ") #on demande au joueur si il a encore une carte compatible

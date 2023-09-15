@@ -7,6 +7,7 @@ class Main:
 	def __init__(self):
 		self.couleurs_cartes = ["pique(♠)", "carreau(♦)", "cœur(♥)", "trèfle(♣)"]
 		self.pile = [Carte(self.couleurs_cartes[i], j) for i in range(4) for j in range(1, 14)]
+		random.shuffle(self.pile)
 		self.defausse = [] #là où les joueurs posent leurs cartes
 		self.joueurs = [] #liste d'objets contenant les joueurs du jeu
 		self.classement = []
