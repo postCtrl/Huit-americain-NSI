@@ -43,10 +43,10 @@ class Main:
 			
 			if r == False : #si il choisi de la tirer
 				if self.pile[-1].compatible(self.defausse[-1]) == True: #si le joueur peut joueur la carte tirée
-					print(f"La carte tirée est le {self.pile[-1].valeur} de {self.pile[-1.couleur]}, elle a donc été jouée")
+					print(f"La carte tirée est le {self.pile[-1].valeur} de {self.pile[-1].couleur}, elle a donc été jouée")
 					self.defausse.append(self.pile.pop())#on l'ajoute à la défausse
 				else: #si on ne peut pas la joueur
-					print(f"La carte tirée est le {self.pile[-1].valeur} de {self.pile[-1.couleur]}, elle a donc été ajoutée à la main de {i.nom}")
+					print(f"La carte tirée est le {self.pile[-1].valeur} de {self.pile[-1].couleur}, elle a donc été ajoutée à la main de {i.nom}")
 					i.ajoutCarte(self.pile.pop())#on l'ajoute à sa main
 			
 			else : 
@@ -59,9 +59,10 @@ class Main:
 		for i in self.joueurs:
 			if len(i.main) == 0:#si la main du joueur est vide il a gagné
 				return i.nom
+		return False
 
 	def classer(self):
-		for i in self.joueurs:
+		for i in self.joueurs: #on ajoute les scores de chaque joueurs 
 			self.classement.append(i.sommePoints())
 
 
@@ -70,7 +71,7 @@ class Main:
 				if self.classement[j + 1][0] > self.classement[j][0]:
 					self.classement[j+ 1], self.classement[j] = self.classement[j], self.classement[j + 1] 
 
-		return self.classement
+		print(self.classement)
 
 
 
