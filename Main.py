@@ -1,6 +1,7 @@
 import random
 from Carte import *
 from Joueur import * 
+#from colorama import Fore, Back, Style, init
 
 class Main:
 	def __init__(self):
@@ -21,7 +22,7 @@ class Main:
 
 			self.joueurs.append(Joueur(r))
 
-		random.shuffle(self.joueurs)
+		random.shuffle(self.joueurs) #on randomise l'ordre des joueurs
 		print("\n")
 
 	def distribuerCartes(self):
@@ -52,6 +53,14 @@ class Main:
 
 			i.voirCartes()
 
+
+	def partieTerminee(self):
+		for i in self.joueurs:
+			if len(i.main) == 0:#si la main du joueur est vide il a gagné
+				return i.nom
+
+
 main = Main()
 main.distribuerCartes()
-main.phaseDeJeu()
+while main.partieTerminee() == False:
+	main.phaseDeJeu()
