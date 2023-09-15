@@ -21,6 +21,7 @@ class Main:
 
 			self.joueurs.append(Joueur(r))
 
+		random.shuffle(self.joueurs)
 		print("\n")
 
 	def distribuerCartes(self):
@@ -31,15 +32,16 @@ class Main:
 		self.defausse.append(self.pile.pop())
 
 	def phaseDeJeu(self):
-		print(f"Voici la carte centrale: {self.defausse[-1].valeur} de {self.defausse[-1].couleur}\n")
-
 		for i in self.joueurs: #les joueurs jouent chacune leur tour
+			print(f"\nVoici la carte centrale: {self.defausse[-1].valeur} de {self.defausse[-1].couleur}\n")
+
 			i.voirCartes()#on affiche les cartes du joueur
 
 			r = i.poserCartes(self.defausse[-1]) #le joueur concerné pose sa carte ou en tire une
 			
 			if r == False : #si il choisi de la tirer
 				if self.pile[-1].compatible(self.defausse[-1]) == True: #si le joueur peut joueur la carte tirée
+					print(f"La carte tirée est le {self.pile[-1].valeur} de {self.pile[-1.couleur]}, elle a donc été jouée")
 					self.defausse.append(self.pile.pop())#on l'ajoute à la défausse
 				else: #si on ne peut pas la joueur
 					i.ajoutCarte(self.pile.pop())#on l'ajoute à sa main
@@ -47,6 +49,7 @@ class Main:
 			else : 
 				self.defausse.append(r) #on ajoute la carte jouée à la défausse
 
+			i.voirCartes()
 
 main = Main()
 main.distribuerCartes()

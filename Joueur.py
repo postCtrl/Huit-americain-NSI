@@ -7,7 +7,7 @@ class Joueur:
 
 	def ajoutCarte(self, C):
 		self.main.append(C)
-		print(f"La carte {C.valeur}")
+		print(f"La carte {C.valeur} de {C.couleur} a été distribuée à {self.nom}")
 
 	def voirCartes(self):
 		index = 0
@@ -17,10 +17,10 @@ class Joueur:
 		print("")
 
 	def poserCartes(self, defausse):
-		r = input("Pour choisir votre carte sélectionnez l'indice de la carte que vous voulez jouer: ") - 1
+		r = int(input("Pour choisir votre carte sélectionnez l'indice de la carte que vous voulez jouer: ")) - 1
 
-		while self.main[r].compatible(defausse) == False:
-			r = input("La carte choisie n'est peut pas être posée, choisissez en une autre ou tirez une carte avec 't': ")
+		while self.main[r].compatible(defausse) == False: #tant que le joueur n'a pas joué de carte compatible
+			r = input("La carte choisie n'est peut pas être posée, choisissez en une autre ou tirez une carte avec 't': ") #on demande au joueur si il a encore une carte compatible
 			
 			if r.lower() == 't':#si le joueur préfère tirer une carte
 				return False 
