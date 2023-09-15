@@ -72,7 +72,10 @@ class Main:
 				if self.classement[j + 1][0] > self.classement[j][0]:
 					self.classement[j+ 1], self.classement[j] = self.classement[j], self.classement[j + 1] 
 
-		print(self.classement)
+		print(f"{self.classement[0].nom} a gagné ! \n Félicitations !\n")
+
+		for iii in range(1, len(self.classement) - 1):
+			print(f"{self.classement[iii][1]} est arrivé {iii}ème avec {self.classement[iii][0]} points")
 
 
 
