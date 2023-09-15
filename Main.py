@@ -65,6 +65,14 @@ class Main:
 			self.classement.append(i.sommePoints())
 
 
+		for ii in range(len(self.classement) - 1, 1, -1):
+			for j in range(ii - 1):
+				if self.classement[j + 1][0] > self.classement[j][0]:
+					self.classement[j+ 1], self.classement[j] = self.classement[j], self.classement[j + 1] 
+
+		return self.classement
+
+
 
 main = Main()
 main.distribuerCartes()
