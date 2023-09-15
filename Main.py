@@ -9,6 +9,7 @@ class Main:
 		self.pile = [Carte(self.couleurs_cartes[i], j) for i in range(4) for j in range(1, 14)]
 		self.defausse = [] #là où les joueurs posent leurs cartes
 		self.joueurs = [] #liste d'objets contenant les joueurs du jeu
+		self.classement = []
 		
 		r=""
 		i = 0
@@ -59,8 +60,14 @@ class Main:
 			if len(i.main) == 0:#si la main du joueur est vide il a gagné
 				return i.nom
 
+	def classer(self):
+		for i in self.joueurs:
+			self.classement.append(i.sommePoints())
+
+
 
 main = Main()
 main.distribuerCartes()
 while main.partieTerminee() == False:
 	main.phaseDeJeu()
+main.classer()

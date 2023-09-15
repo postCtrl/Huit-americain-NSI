@@ -30,3 +30,21 @@ class Joueur:
 
 		e = self.main.pop(r) # on retire la carte utilisée	
 		return e # on la retourne également pour la placer dans le défausse
+
+	def sommePoints(self):#somme des points du joueur en fin de partie
+		s = 0
+		for i in self.main:
+			if i.valeur == 8:
+				s+=50
+			
+			if i.valeur == (1 or 2 or 11):
+				s+=25
+
+			if i.valeur == (12 or 13):
+				s+=10
+
+			else :
+				s+= i.valeur
+
+		return(s, self.nom)
+
