@@ -3,6 +3,8 @@ from Carte import *
 from Joueur import * 
 #from colorama import Fore, Back, Style, init
 
+regles = "https://jeuxetlogique.fr/wp-content/uploads/2021/12/Le-8-americain_txt.pdf"
+
 class Main:
 	def __init__(self):
 		self.couleurs_cartes = ["pique(♠)", "carreau(♦)", "cœur(♥)", "trèfle(♣)"]
@@ -11,6 +13,7 @@ class Main:
 		self.defausse = [] #là où les joueurs posent leurs cartes
 		self.joueurs = [] #liste d'objets contenant les joueurs du jeu
 		self.classement = []
+		print(regles)#ligne codée par yannis ouachtachti 
 		
 		r=""
 		i = 0
