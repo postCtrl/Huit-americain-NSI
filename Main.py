@@ -44,6 +44,7 @@ class Main:
 					print(f"La carte tirée est le {self.pile[-1].valeur} de {self.pile[-1.couleur]}, elle a donc été jouée")
 					self.defausse.append(self.pile.pop())#on l'ajoute à la défausse
 				else: #si on ne peut pas la joueur
+					print(f"La carte tirée est le {self.pile[-1].valeur} de {self.pile[-1.couleur]}, elle a donc été ajoutée à la main de {i.nom}")
 					i.ajoutCarte(self.pile.pop())#on l'ajoute à sa main
 			
 			else : 
