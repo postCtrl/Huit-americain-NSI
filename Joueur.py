@@ -3,7 +3,7 @@ from colorama import Fore, Back, Style, init
 
 class Joueur:
 	def __init__(self, nom):
-		couleurs_cartes = ["pique(♠)", "carreau(♦)", "cœur(♥)", "trèfle(♣)"]
+		couleurs_cartes = [Fore.BLACK + "pique(♠)"+ Style.RESET_ALL, Fore.RED + "carreau(♦)" + Style.RESET_ALL, Fore.RED + "cœur(♥)" + Style.RESET_ALL, Fore.BLACK + "trèfle(♣)" + Style.RESET_ALL]
 		self.main = []
 		self.nom = nom
 

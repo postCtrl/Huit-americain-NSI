@@ -3,11 +3,11 @@ from Carte import *
 from Joueur import * 
 from colorama import Fore, Back, Style, init
 
-regles = "https://jeuxetlogique.fr/wp-content/uploads/2021/12/Le-8-americain_txt.pdf"
+regles = "https://jeuxetlogique.fr/wp-content/uploads/2021/12/Le-8-americain_txt.pdf\n"
 
 class Main:
 	def __init__(self):
-		couleurs_cartes = [Fore.BLACK + "pique(♠)", Fore.RED + "carreau(♦)", Fore.RED + "cœur(♥)", Fore.BLACK"trèfle(♣)"]
+		couleurs_cartes = [Fore.BLACK + "pique(♠)"+ Style.RESET_ALL, Fore.RED + "carreau(♦)" + Style.RESET_ALL, Fore.RED + "cœur(♥)" + Style.RESET_ALL, Fore.BLACK + "trèfle(♣)" + Style.RESET_ALL]
 		self.pile = [Carte(couleurs_cartes[i], j) for i in range(4) for j in range(1, 14)]
 		random.shuffle(self.pile)
 		self.defausse = [] #là où les joueurs posent leurs cartes
@@ -47,7 +47,7 @@ class Main:
 				for i in range(2):
 					i.ajoutCarte(self.pile.pop())
 				print(f"\nLe tour de {i.nom} a été passé")
-				return False 
+				continue 
 
 			r = i.poserCartes(self.defausse[-1]) #le joueur concerné pose sa carte ou en tire une
 
@@ -65,7 +65,7 @@ class Main:
 				self.defausse.append(r) #on ajoute la carte jouée à la défausse
 
 			i.voirCartes()
-			return False
+			continue
 
 
 	def partieTerminee(self):
