@@ -1,3 +1,5 @@
+from colorama import Fore, Back, Style, init
+
 class Carte:
 	def __init__(self, couleur, valeur):
 		self.couleur = couleur

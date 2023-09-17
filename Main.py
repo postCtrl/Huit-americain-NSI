@@ -1,13 +1,13 @@
 import random
 from Carte import *
 from Joueur import * 
-#from colorama import Fore, Back, Style, init
+from colorama import Fore, Back, Style, init
 
 regles = "https://jeuxetlogique.fr/wp-content/uploads/2021/12/Le-8-americain_txt.pdf"
 
 class Main:
 	def __init__(self):
-		couleurs_cartes = ["pique(♠)", "carreau(♦)", "cœur(♥)", "trèfle(♣)"]
+		couleurs_cartes = [Fore.BLACK + "pique(♠)", Fore.RED + "carreau(♦)", Fore.RED + "cœur(♥)", Fore.BLACK"trèfle(♣)"]
 		self.pile = [Carte(couleurs_cartes[i], j) for i in range(4) for j in range(1, 14)]
 		random.shuffle(self.pile)
 		self.defausse = [] #là où les joueurs posent leurs cartes

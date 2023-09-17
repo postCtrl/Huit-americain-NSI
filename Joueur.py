@@ -1,5 +1,5 @@
 from Carte import *
-#from colorama import Fore, Back, Style, init
+from colorama import Fore, Back, Style, init
 
 class Joueur:
 	def __init__(self, nom):
