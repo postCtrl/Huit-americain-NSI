@@ -3,6 +3,7 @@ from Carte import *
 
 class Joueur:
 	def __init__(self, nom):
+		couleurs_cartes = ["pique(♠)", "carreau(♦)", "cœur(♥)", "trèfle(♣)"]
 		self.main = []
 		self.nom = nom
 
@@ -33,7 +34,12 @@ class Joueur:
 
 			r = int(r) -1 #ne pas avoir d'erreur lorsque j'uilise 'r' comme indice
 
-		e = self.main.pop(r) # on retire la carte utilisée	
+		e = self.main.pop(r) # on retire la carte utilisée
+		
+		if e.valeur == 8 :
+			r = int(input("Choisissez la couleur queles autres devront jouer"))
+			e.couleur = couleurs_cartes[r]
+
 		return e # on la retourne également pour la placer dans le défausse
 
 	def sommePoints(self):#somme des points du joueur en fin de partie

@@ -7,8 +7,8 @@ regles = "https://jeuxetlogique.fr/wp-content/uploads/2021/12/Le-8-americain_txt
 
 class Main:
 	def __init__(self):
-		self.couleurs_cartes = ["pique(♠)", "carreau(♦)", "cœur(♥)", "trèfle(♣)"]
-		self.pile = [Carte(self.couleurs_cartes[i], j) for i in range(4) for j in range(1, 14)]
+		couleurs_cartes = ["pique(♠)", "carreau(♦)", "cœur(♥)", "trèfle(♣)"]
+		self.pile = [Carte(couleurs_cartes[i], j) for i in range(4) for j in range(1, 14)]
 		random.shuffle(self.pile)
 		self.defausse = [] #là où les joueurs posent leurs cartes
 		self.joueurs = [] #liste d'objets contenant les joueurs du jeu
@@ -38,6 +38,8 @@ class Main:
 		self.defausse.append(self.pile.pop())
 
 	def phaseDeJeu(self):
+
+
 		for i in self.joueurs: #les joueurs jouent chacune leur tour
 			print(f"\nVoici la carte centrale: {self.defausse[-1].valeur} de {self.defausse[-1].couleur}\n")
 
@@ -46,6 +48,7 @@ class Main:
 			if self.defausse[-1].valeur == 2 :
 				for i in range(2):
 					i.ajoutCarte(self.pile.pop())
+				print(f"\nLe tour de {i.nom} a été passé")
 				return False 
 
 			r = i.poserCartes(self.defausse[-1]) #le joueur concerné pose sa carte ou en tire une
@@ -62,6 +65,7 @@ class Main:
 				self.defausse.append(r) #on ajoute la carte jouée à la défausse
 
 			i.voirCartes()
+			return False
 
 
 	def partieTerminee(self):
