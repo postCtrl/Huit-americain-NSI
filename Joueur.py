@@ -52,4 +52,3 @@ class Joueur:
 				s+= i.valeur
 
 		return(s, self.nom)
-

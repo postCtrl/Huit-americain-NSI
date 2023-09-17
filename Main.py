@@ -42,9 +42,14 @@ class Main:
 			print(f"\nVoici la carte centrale: {self.defausse[-1].valeur} de {self.defausse[-1].couleur}\n")
 
 			i.voirCartes()#on affiche les cartes du joueur
+			
+			if self.defausse[-1].valeur == 2 :
+				for i in range(2):
+					i.ajoutCarte(self.pile.pop())
+				return False 
 
 			r = i.poserCartes(self.defausse[-1]) #le joueur concerné pose sa carte ou en tire une
-			
+
 			if r == False : #si il choisi de la tirer
 				if self.pile[-1].compatible(self.defausse[-1]) == True: #si le joueur peut joueur la carte tirée
 					print(f"La carte tirée est le {self.pile[-1].valeur} de {self.pile[-1].couleur}, elle a donc été jouée")
