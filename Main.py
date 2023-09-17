@@ -44,7 +44,7 @@ class Main:
 			i.voirCartes()#on affiche les cartes du joueur
 			
 			if self.defausse[-1].valeur == 2 :
-				for i in range(2):
+				for _ in range(2):
 					i.ajoutCarte(self.pile.pop())
 				print(f"\nLe tour de {i.nom} a été passé")
 				continue 

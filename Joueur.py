@@ -37,7 +37,10 @@ class Joueur:
 		e = self.main.pop(r) # on retire la carte utilisée
 		
 		if e.valeur == 8 :
-			r = int(input("Choisissez la couleur queles autres devront jouer"))
+			for i in range(len(couleurs_cartes) - 1):
+				print(i, couleurs_cartes[i], "\n")
+
+			r = int(input("Choisissez la couleur queles autres devront jouer: "))
 			e.couleur = couleurs_cartes[r]
 
 		return e # on la retourne également pour la placer dans le défausse
