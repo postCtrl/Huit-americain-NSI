@@ -5,6 +5,9 @@ class Carte:
 
 	def compatible(self, carte2):
 		
+		if self.valeur == 1 and carte2.valeur == 1:
+			return True
+
 		if self.couleur == carte2.couleur or self.valeur == carte2.valeur or self.valeur == 8:
 			return True
 

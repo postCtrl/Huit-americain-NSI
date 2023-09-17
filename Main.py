@@ -38,8 +38,6 @@ class Main:
 		self.defausse.append(self.pile.pop())
 
 	def phaseDeJeu(self):
-
-
 		for i in self.joueurs: #les joueurs jouent chacune leur tour
 			print(f"\nVoici la carte centrale: {self.defausse[-1].valeur} de {self.defausse[-1].couleur}\n")
 
