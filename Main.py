@@ -60,6 +60,8 @@ class Main:
 					i.ajoutCarte(self.pile.pop())#on l'ajoute à sa main
 			
 			else : 
+				if r.valeur == 1:
+					self.joueurs.reverse()
 				self.defausse.append(r) #on ajoute la carte jouée à la défausse
 
 			i.voirCartes()
