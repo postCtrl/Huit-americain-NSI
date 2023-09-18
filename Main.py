@@ -13,6 +13,7 @@ class Main:
 		self.defausse = [] #là où les joueurs posent leurs cartes
 		self.joueurs = [] #liste d'objets contenant les joueurs du jeu
 		self.classement = []
+		self.tours = 0
 		print(regles)#ligne codée par yannis ouachtachti 
 		
 		r=""
@@ -43,7 +44,7 @@ class Main:
 
 			i.voirCartes()#on affiche les cartes du joueur
 			
-			if self.defausse[-1].valeur == 2 :
+			if self.defausse[-1].valeur == 2  and self.tours > 0:
 				for _ in range(2):
 					i.ajoutCarte(self.pile.pop())
 				print(f"\nLe tour de {i.nom} a été passé")
@@ -60,12 +61,14 @@ class Main:
 					i.ajoutCarte(self.pile.pop())#on l'ajoute à sa main
 			
 			else : 
-				if r.valeur == 1:
+				if r.valeur == 11 and len(self.joueurs) > 2:
 					self.joueurs.reverse()
+					print("L'ordre de jeu a été inversé\n")
 				self.defausse.append(r) #on ajoute la carte jouée à la défausse
 
 			i.voirCartes()
 			continue
+		self.tours += 1
 
 
 	def partieTerminee(self):
@@ -84,7 +87,7 @@ class Main:
 				if self.classement[j + 1][0] > self.classement[j][0]:
 					self.classement[j+ 1], self.classement[j] = self.classement[j], self.classement[j + 1] 
 
-		print(f"{self.classement[0].nom} a gagné ! \n Félicitations !\n")
+		print(f"{self.classement[0].nom} a gagné en {self.tours} tours! \n Félicitations !\n")
 
 		for iii in range(1, len(self.classement) - 1):
 			print(f"{self.classement[iii][1]} est arrivé {iii}ème avec {self.classement[iii][0]} points")

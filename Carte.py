@@ -6,7 +6,6 @@ class Carte:
 		self.valeur = valeur
 
 	def compatible(self, carte2):
-		
 		if self.valeur == 1 and carte2.valeur == 1:
 			return True
 
