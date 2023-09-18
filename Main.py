@@ -59,14 +59,12 @@ class Main:
 				else: #si on ne peut pas la joueur
 					print(f"La carte tirée est le {self.pile[-1].valeur} de {self.pile[-1].couleur}, elle a donc été ajoutée à la main de {i.nom}")
 					i.ajoutCarte(self.pile.pop())#on l'ajoute à sa main
-			
-			else : 
-				if r.valeur == 11 and len(self.joueurs) > 2:
-					self.joueurs.reverse()
-					print("L'ordre de jeu a été inversé\n")
-				self.defausse.append(r) #on ajoute la carte jouée à la défausse
 
-			i.voirCartes()
+			if r.valeur == 11 and len(self.joueurs) > 2:
+				self.joueurs.reverse()
+				print("L'ordre de jeu a été inversé\n")
+			self.defausse.append(r) #on ajoute la carte jouée à la défausse
+
 			continue
 		self.tours += 1
 
