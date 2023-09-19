@@ -50,9 +50,9 @@ class Main:
 				print(f"\nLe tour de {i.nom} a été passé")
 				continue 
 
-			r = i.poserCartes(self.defausse[-1]) #le joueur concerné pose sa carte ou en tire une
+			rep = i.poserCartes(self.defausse[-1]) #le joueur concerné pose sa carte ou en tire une
 
-			if r == False : #si il choisi de la tirer
+			if rep == False : #si il choisi de la tirer
 				if self.pile[-1].compatible(self.defausse[-1]) == True: #si le joueur peut joueur la carte tirée
 					print(f"La carte tirée est le {self.pile[-1].valeur} de {self.pile[-1].couleur}, elle a donc été jouée")
 					self.defausse.append(self.pile.pop())#on l'ajoute à la défausse
@@ -60,10 +60,10 @@ class Main:
 					print(f"La carte tirée est le {self.pile[-1].valeur} de {self.pile[-1].couleur}, elle a donc été ajoutée à la main de {i.nom}")
 					i.ajoutCarte(self.pile.pop())#on l'ajoute à sa main
 
-			if r.valeur == 11 and len(self.joueurs) > 2:
+			if rep.valeur == 11 and len(self.joueurs) > 2:
 				self.joueurs.reverse()
 				print("L'ordre de jeu a été inversé\n")
-			self.defausse.append(r) #on ajoute la carte jouée à la défausse
+			self.defausse.append(rep) #on ajoute la carte jouée à la défausse
 
 			continue
 		self.tours += 1

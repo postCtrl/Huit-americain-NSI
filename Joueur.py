@@ -22,11 +22,14 @@ class Joueur:
 		while True :
 			r = input("Pour choisir votre carte sélectionnez l'indice de la carte que vous voulez jouer ou tirez une carte avec 't': ")
 			try:
-				r = int(r)
 				if r.lower() == 't':
 					return False
+				r = int(r)
+				carte = self.main.pop()
+				return carte
 				break
 			except ValueError:
+				print(r)
 				continue
 				
 		while self.main[r - 1].compatible(defausse) == False: #tant que le joueur n'a pas joué de carte compatible
@@ -51,6 +54,7 @@ class Joueur:
 								e.couleur = couleurs_cartes[r]
 								break
 							except IndexError:
+								print(r, e.couleur, e.valeur)
 								continue
 
 					if e == None:
