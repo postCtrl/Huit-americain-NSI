@@ -25,10 +25,10 @@ class Joueur:
 				if r.lower() == 't':
 					return False
 				r = int(r)
-				carte = self.main.pop()
+				carte = self.main.pop(r - 1)
 				return carte
 				break
-			except ValueError:
+			except (ValueError, IndexError):
 				print(r)
 				continue
 				

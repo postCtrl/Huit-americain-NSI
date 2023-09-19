@@ -94,6 +94,6 @@ class Main:
 
 main = Main()
 main.distribuerCartes()
-while main.partieTerminee() == False
+while main.partieTerminee() == False :
 	main.phaseDeJeu()
 main.classer()
