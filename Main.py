@@ -14,7 +14,7 @@ class Main:
 		self.joueurs = [] #liste d'objets contenant les joueurs du jeu
 		self.classement = []
 		self.tours = 0
-		print(regles)#ligne codée par yannis ouachtachti 
+		print(regles)#ligne codée par yanis ouachtati 
 		
 		r=""
 		i = 0
@@ -72,7 +72,7 @@ class Main:
 	def partieTerminee(self):
 		for i in self.joueurs:
 			if len(i.main) == 0:#si la main du joueur est vide il a gagné
-				return i.nom
+				return True
 		return False
 
 	def classer(self):
@@ -85,7 +85,7 @@ class Main:
 				if self.classement[j + 1][0] > self.classement[j][0]:
 					self.classement[j+ 1], self.classement[j] = self.classement[j], self.classement[j + 1] 
 
-		print(f"{self.classement[0].nom} a gagné en {self.tours} tours! \n Félicitations !\n")
+		print(f"{self.classement[0][1].nom} a gagné en {self.tours} tours! \n Félicitations !\n")
 
 		for iii in range(1, len(self.classement) - 1):
 			print(f"{self.classement[iii][1]} est arrivé {iii}ème avec {self.classement[iii][0]} points")
@@ -94,6 +94,6 @@ class Main:
 
 main = Main()
 main.distribuerCartes()
-while main.partieTerminee() == False:
+while main.partieTerminee() == False
 	main.phaseDeJeu()
 main.classer()

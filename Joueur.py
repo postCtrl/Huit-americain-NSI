@@ -57,10 +57,6 @@ class Joueur:
 								print(r, e.couleur, e.valeur)
 								continue
 
-					if e == None:
-						print("ERREUR!!!!!!!!!!!!!!!!!!!!!!!!!")
-						exit()
-
 					return e # on la retourne également pour la placer dans le défausse
 
 				except IndexError:
