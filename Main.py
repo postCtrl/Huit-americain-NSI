@@ -39,48 +39,46 @@ class Main:
 		self.defausse.append(self.pile.pop())
 
 	def phaseDeJeu(self):
-		for i in self.joueurs: #les joueurs jouent chacune leur tour
-			print(f"\nVoici la carte centrale: {self.defausse[-1].valeur} de {self.defausse[-1].couleur}\n")
+		while True:
+			for i in self.joueurs: #les joueurs jouent chacune leur tour
+				print(f"\nVoici la carte centrale: {self.defausse[-1].valeur} de {self.defausse[-1].couleur}\n")
 
-			i.voirCartes()#on affiche les cartes du joueur
-			
-			if self.defausse[-1].valeur == 2  and self.tours > 0:
-				for _ in range(2):
-					i.ajoutCarte(self.pile.pop())
-				print(f"\nLe tour de {i.nom} a été passé")
-				continue 
-
-			rep = i.poserCartes(self.defausse[-1]) #le joueur concerné pose sa carte ou en tire une
-
-			if rep == False : #si il choisi de la tirer
-				if self.pile[-1].compatible(self.defausse[-1]) == True: #si le joueur peut joueur la carte tirée
-					print(f"La carte tirée est le {self.pile[-1].valeur} de {self.pile[-1].couleur}, elle a donc été jouée")
-					self.defausse.append(self.pile.pop())#on l'ajoute à la défausse
-					continue
-				else: #si on ne peut pas la joueur
-					print(f"La carte tirée est le {self.pile[-1].valeur} de {self.pile[-1].couleur}, elle a donc été ajoutée à la main de {i.nom}")
-					i.ajoutCarte(self.pile.pop())#on l'ajoute à sa main
-					continue
-			try:
-				if rep.lower() == 'carte':
+				i.voirCartes()#on affiche les cartes du joueur
+				
+				if self.defausse[-1].valeur == 2  and self.tours > 0:
 					for _ in range(2):
 						i.ajoutCarte(self.pile.pop())
+					print(f"\nLe tour de {i.nom} a été passé")
+					continue 
 
-			except AttributeError:
-				if rep.valeur == "Valet" and len(self.joueurs) > 2:
-					self.joueurs.reverse()
-					print("L'ordre de jeu a été inversé\n")
-				self.defausse.append(rep) #on ajoute la carte jouée à la défausse
+				rep = i.poserCartes(self.defausse[-1]) #le joueur concerné pose sa carte ou en tire une
 
-			continue
-		self.tours += 1
+				if rep == False : #si il choisi de la tirer
+					if self.pile[-1].compatible(self.defausse[-1]) == True: #si le joueur peut joueur la carte tirée
+						print(f"La carte tirée est le {self.pile[-1].valeur} de {self.pile[-1].couleur}, elle a donc été jouée")
+						self.defausse.append(self.pile.pop())#on l'ajoute à la défausse
+						rep = True
+						continue
+					else: #si on ne peut pas la joueur
+						print(f"La carte tirée est le {self.pile[-1].valeur} de {self.pile[-1].couleur}, elle a donc été ajoutée à la main de {i.nom}")
+						i.ajoutCarte(self.pile.pop())#on l'ajoute à sa main
+						continue
+				try:
+					if rep.lower() != 'carte':
+						for _ in range(2):
+							i.ajoutCarte(self.pile.pop())
 
+				except AttributeError:
+					if rep.valeur == "Valet" and len(self.joueurs) > 2:
+						self.joueurs.reverse()
+						print("L'ordre de jeu a été inversé\n")
+					self.defausse.append(rep) #on ajoute la carte jouée à la défausse
 
-	def partieTerminee(self):
-		for i in self.joueurs:
-			if len(i.main) == 0:#si la main du joueur est vide il a gagné
-				return True
-		return False
+				continue
+
+				if len(i.main) == 0:
+					return True
+			self.tours += 1
 
 	def classer(self):
 		for i in self.joueurs: #on ajoute les scores de chaque joueurs 
@@ -92,15 +90,13 @@ class Main:
 				if self.classement[j + 1][0] > self.classement[j][0]:
 					self.classement[j+ 1], self.classement[j] = self.classement[j], self.classement[j + 1] 
 
-		print(f"{self.classement[0][1]} a gagné en {self.tours} tours! \n Félicitations !\n")
+		print(f"{self.classement[0][1]} a gagné en {self.tours} tours! Félicitations !\n")
 
-		for iii in range(1, len(self.classement) - 1):
+		for iii in range(1, len(self.classement)):
 			print(f"{self.classement[iii][1]} est arrivé {iii}ème avec {self.classement[iii][0]} points")
-
 
 
 main = Main()
 main.distribuerCartes()
-while main.partieTerminee() == False :
-	main.phaseDeJeu()
+main.phaseDeJeu()
 main.classer()
