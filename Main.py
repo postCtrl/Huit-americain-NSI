@@ -64,7 +64,7 @@ class Main:
 						i.ajoutCarte(self.pile.pop())#on l'ajoute à sa main
 						continue
 				try:
-					if rep.lower() != 'carte':
+					if rep.lower() != 'carte' and len(i.main) == 1:
 						for _ in range(2):
 							i.ajoutCarte(self.pile.pop())
 
