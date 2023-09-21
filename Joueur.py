@@ -40,6 +40,10 @@ class Joueur:
 					if r.lower() == 't':#si le joueur préfère tirer une carte
 						return False 
 
+					if len(self.main) == 1 and r.lower() != 'carte':
+						print("Vous avez oublié de dire 'Carte'")
+						return r
+
 					r = int(r)
 
 					e = self.main.pop(r - 1) # on retire la carte utilisée
@@ -68,10 +72,10 @@ class Joueur:
 			if i.valeur == 8:
 				s+=50
 			
-			if i.valeur == (1 or 2 or 11):
+			if i.valeur == (1 or 2 or "Valet"):
 				s+=25
 
-			if i.valeur == (12 or 13):
+			if i.valeur == ("Dame" or "Roi"):
 				s+=10
 
 			else :
