@@ -4,6 +4,7 @@ class Carte:
 	def __init__(self, couleur, valeur):
 		self.couleur = couleur
 		self.valeur = valeur
+		
 		if self.valeur == 11:
 			self.valeur = "Valet"
 		if self.valeur == 12:

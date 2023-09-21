@@ -56,18 +56,21 @@ class Main:
 				if self.pile[-1].compatible(self.defausse[-1]) == True: #si le joueur peut joueur la carte tirée
 					print(f"La carte tirée est le {self.pile[-1].valeur} de {self.pile[-1].couleur}, elle a donc été jouée")
 					self.defausse.append(self.pile.pop())#on l'ajoute à la défausse
+					continue
 				else: #si on ne peut pas la joueur
 					print(f"La carte tirée est le {self.pile[-1].valeur} de {self.pile[-1].couleur}, elle a donc été ajoutée à la main de {i.nom}")
 					i.ajoutCarte(self.pile.pop())#on l'ajoute à sa main
-			
-			if rep.lower() == 'carte':
-				for _ in range(2):
-					i.ajoutCarte(self.pile.pop())
+					continue
+			try:
+				if rep.lower() == 'carte':
+					for _ in range(2):
+						i.ajoutCarte(self.pile.pop())
 
-			if rep.valeur == "Valet" and len(self.joueurs) > 2:
-				self.joueurs.reverse()
-				print("L'ordre de jeu a été inversé\n")
-			self.defausse.append(rep) #on ajoute la carte jouée à la défausse
+			except AttributeError:
+				if rep.valeur == "Valet" and len(self.joueurs) > 2:
+					self.joueurs.reverse()
+					print("L'ordre de jeu a été inversé\n")
+				self.defausse.append(rep) #on ajoute la carte jouée à la défausse
 
 			continue
 		self.tours += 1
@@ -89,7 +92,7 @@ class Main:
 				if self.classement[j + 1][0] > self.classement[j][0]:
 					self.classement[j+ 1], self.classement[j] = self.classement[j], self.classement[j + 1] 
 
-		print(f"{self.classement[0][1].nom} a gagné en {self.tours} tours! \n Félicitations !\n")
+		print(f"{self.classement[0][1]} a gagné en {self.tours} tours! \n Félicitations !\n")
 
 		for iii in range(1, len(self.classement) - 1):
 			print(f"{self.classement[iii][1]} est arrivé {iii}ème avec {self.classement[iii][0]} points")
